@@ -1,5 +1,7 @@
 package com.alex.common;
 
+import android.content.Context;
+
 /**
  * 一些配置信息
  * @author caisenchuan
@@ -21,12 +23,20 @@ public class AppConfig {
     /**调试开关*/
     private static boolean mDebug = false;
     
-    /**路径后缀*/
-    private static String mDirPostfix = "";
+    /**基础路径*/
+    private static String mDirBase = "com.alex";
     
     /*--------------------------
      * public方法
      *-------------------------*/
+    /**
+     * 使用包名作为基础路径
+     * @param context
+     */
+    public static void configPackageNameAsBaseDir(Context context) {
+        mDirBase = context.getApplicationInfo().packageName;
+    }
+    
     /**
      * 设置调试开关
      */
@@ -45,14 +55,14 @@ public class AppConfig {
      * 设置路径后缀
      */
     public static void setDirPostfix(String fix) {
-        mDirPostfix = fix;
+        mDirBase = String.format("com.alex.%s", fix);
     }
     
     /**
      * 获取APP自定义存储路径
      */
     public static String getDirApp() {
-        String str = String.format("/com.alex%s/", mDirPostfix);
+        String str = String.format("/%s/", mDirBase);
         return str;
     }
 
@@ -60,7 +70,7 @@ public class AppConfig {
      * 获取APP照片存储路径
      */
     public static String getDirPhoto() {
-        String str = String.format("/com.alex%s/photo/", mDirPostfix);
+        String str = String.format("/%s/photo/", mDirBase);
         return str;
     }
     
@@ -68,7 +78,15 @@ public class AppConfig {
      * 获取APP下载存储路径
      */
     public static String getDirDownload() {
-        String str = String.format("/com.alex%s/download/", mDirPostfix);
+        String str = String.format("/%s/download/", mDirBase);
+        return str;
+    }
+    
+    /**
+     * 获取APP分享路径
+     */
+    public static String getDirShare() {
+        String str = String.format("/%s/share/", mDirBase);
         return str;
     }
     /*--------------------------

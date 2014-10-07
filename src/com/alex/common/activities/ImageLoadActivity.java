@@ -2,7 +2,7 @@ package com.alex.common.activities;
 
 import com.alex.common.R;
 import com.alex.common.utils.ImageUtils;
-import com.alex.common.utils.SmartToast;
+import com.alex.common.utils.ToastUtils;
 import com.alex.common.utils.FileUtils.PathType;
 import com.alex.common.views.ZoomImageView;
 
@@ -135,7 +135,7 @@ public class ImageLoadActivity extends BaseActivity{
             @Override
             public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
                 mProgress.setVisibility(View.GONE);
-                SmartToast.showLongToast(ImageLoadActivity.this, "Load faild!", false);
+                ToastUtils.showLongToast(ImageLoadActivity.this, "Load faild!", false);
                 mImageBuffer = null;
             }
             

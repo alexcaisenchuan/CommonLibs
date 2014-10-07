@@ -7,6 +7,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
 
+/**
+ * 分享工具类
+ * @author caisenchuan
+ */
 public class ShareUtils {
     /*--------------------------
      * 常量

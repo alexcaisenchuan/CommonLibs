@@ -12,7 +12,7 @@ package com.alex.common.activities;
 import com.alex.common.AppControl;
 import com.alex.common.R;
 import com.alex.common.utils.DialogUtils;
-import com.alex.common.utils.SmartToast;
+import com.alex.common.utils.ToastUtils;
 import com.alex.common.utils.KLog;
 import com.alex.common.utils.ThreadUtils;
 
@@ -162,7 +162,7 @@ public abstract class BaseActivity extends Activity {
                 if(msg.what == MSG_SHOW_TOAST) {
                     //在主线程显示Toast
                     String text = (String)msg.obj;
-                    SmartToast.showLongToast(BaseActivity.this, text, true);
+                    ToastUtils.showLongToast(BaseActivity.this, text, true);
                 } else if(msg.what > MSG_EXTEND_BASE) {
                     //子类的处理函数
                     handleBaseMessage(msg);

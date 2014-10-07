@@ -12,7 +12,7 @@ package com.alex.common.utils;
 import android.util.Log;
 
 /**
- * 打印调试日志
+ * 打印调试
  * @author caisenchuan
  */
 public class KLog {

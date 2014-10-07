@@ -21,13 +21,13 @@ import java.io.InputStream;
 import com.alex.common.AppConfig;
 import com.alex.common.utils.FileUtils.PathType;
 
-
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.view.View;
 
 /**
  * 关于图片的一些基本操作
@@ -199,6 +199,36 @@ public class ImageUtils {
         return BitmapFactory.decodeByteArray(buffer, 0, buffer.length);
     }
 
+    /**
+     * 进行屏幕截图
+     * @param v 要截图的根View
+     * @return 截图所在路径
+     */
+    public static String screenShot(View v) {
+        String ret = "";
+        if(v != null) {
+            String fname = FileUtils.getUniqPath(PathType.SHARE, ".png");
+            
+            View view = v.getRootView();
+            view.setDrawingCacheEnabled(true);
+            view.buildDrawingCache();
+            
+            Bitmap bitmap = view.getDrawingCache();
+            if(bitmap != null) {
+                KLog.d(TAG, "bitmap got!");
+                try {
+                    FileOutputStream out = new FileOutputStream(fname);
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
+                    ret = fname;
+                } catch(Exception e) {
+                    KLog.e(TAG, "Exception", e);
+                }
+            } else {
+                KLog.d(TAG, "bitmap is NULL!");
+            }
+        }
+        return ret;
+    }
     /*--------------------------
      * private方法
      *-------------------------*/

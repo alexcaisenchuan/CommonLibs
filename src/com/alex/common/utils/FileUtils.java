@@ -7,6 +7,7 @@ import java.util.GregorianCalendar;
 import com.alex.common.AppConfig;
 
 import android.os.Environment;
+import android.text.TextUtils;
 
 /**
  * 文件相关工具类
@@ -29,7 +30,9 @@ public class FileUtils {
         /**photo目录*/
         PHOTO,
         /**download目录*/
-        DOWNLOAD
+        DOWNLOAD,
+        /**分享图片存放目录*/
+        SHARE
     }
 
     /*--------------------------
@@ -39,6 +42,45 @@ public class FileUtils {
     /*--------------------------
      * public方法
      *-------------------------*/
+    /**
+     * 删除某个目录习啊的所有文件
+     */
+    public static void deleteAllFiles(String path) {
+        if(!TextUtils.isEmpty(path)) {
+            File f = new File(path);
+            deleteAllFiles(f);
+        }
+    }
+    
+    /**
+     * 删除某个目录下的所有文件
+     * @param root
+     */
+    public static void deleteAllFiles(File root) {
+        File files[] = root.listFiles();
+        if (files != null) {
+            for (File f : files) {
+                if (f.isDirectory()) { // 判断是否为文件夹
+                    deleteAllFiles(f);
+                    try {
+                        f.delete();
+                    } catch (Exception e) {
+                        KLog.e(TAG, "Exception", e);
+                    }
+                } else {
+                    if (f.exists()) { // 判断是否存在
+                        deleteAllFiles(f);
+                        try {
+                            f.delete();
+                        } catch (Exception e) {
+                            KLog.e(TAG, "Exception", e);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     /**
      * 删除本地照片
      */
@@ -73,7 +115,9 @@ public class FileUtils {
             dir = AppConfig.getDirPhoto();
         } else if(type == PathType.DOWNLOAD) {
             dir = AppConfig.getDirDownload();
-        } else {
+        } else if(type == PathType.SHARE) {
+        	dir = AppConfig.getDirShare();
+    	} else {
             dir = AppConfig.getDirApp();
         }
 

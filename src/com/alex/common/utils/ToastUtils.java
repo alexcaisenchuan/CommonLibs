@@ -1,22 +1,13 @@
-/**
- * <p>Title: SmartToast.java</p>
- * <p>Description: 简易Toast封装类</p>
- * <p>Copyright: Copyright (c) 2013</p>
- * <p>Company: </p>
- * @author caisenchuan
- * @date 2013-9-8
- * @version 1.0
- */
 package com.alex.common.utils;
 
 import android.content.Context;
 import android.widget.Toast;
 
 /**
+ * Toast工具类
  * @author caisenchuan
- *
  */
-public class SmartToast {
+public class ToastUtils {
     /*--------------------------
      * 自定义类型
      *-------------------------*/
