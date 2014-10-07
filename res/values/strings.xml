@@ -1,0 +1,18 @@
+<resources>
+
+    <string name="app_name">CommonLibs</string>
+    
+    <string name="ok">确认</string>
+    <string name="cancel">取消</string>
+    
+    <string name="image_load_title">查看图片</string>
+    <string name="image_load_save">保存</string>
+    <string name="image_load_hint_loading">加载中</string>
+    <string name="image_load_hint_save_to">保存至:</string>
+    
+    <string name="hint_binary_stream">Get binary stream！</string>
+    <string name="hint_error">错误：</string>
+    <string name="hint_network_error">网络错误：</string>
+    <string name="hint_check_network">请检查您的网络！</string>
+    <string name="hint_progress">操作中，请稍等</string>
+</resources>
